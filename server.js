@@ -13,7 +13,8 @@ if (process.env.NODE_ENV === "development") {
 app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 // Import routes
 const articlesRouter = require("./routes/articles");
