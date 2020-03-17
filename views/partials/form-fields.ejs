@@ -1,4 +1,14 @@
 <div class="form-group">
     <label for="title" class="form-group__label">Title</label>
-    <input type="text" name="title" class="form-group__input" id="title">
+    <input value="<%= article.title %>" type="text" name="title" class="form-group__input" id="title" required>
 </div>
+<div class="form-group">
+    <label for="description" class="form-group__label">Description</label>
+    <textarea name="description" class="form-group__textarea" id="description" required><%= article.description %></textarea>
+</div>
+<div class="form-group">
+    <label for="markdown" class="form-group__label">Markdown</label>
+    <textarea name="markdown" class="form-group__textarea" id="markdown"><%= article.markdown %></textarea>
+</div>
+<a href="/" class="form-cancel">Cancel</a>
+<button type="submit" class="form-submit">Submit</button>

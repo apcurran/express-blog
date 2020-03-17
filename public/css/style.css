@@ -70,4 +70,21 @@ a {
     max-width: 30rem;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-cancel {
+    padding: .75rem 0;
+    display: inline-block;
+}
+
+.form-submit {
+    padding: .75rem 2rem;
+    background-color: #4A5568;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    cursor: pointer;
 }
