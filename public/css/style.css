@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* Base Styling */
 body {
     min-height: 100vh;
     font-family: sans-serif;
@@ -23,8 +24,7 @@ a {
 }
 
 .main {
-    margin: 3rem 2rem;
-    width: 50rem;
+    margin: 3rem 1rem;
     max-width: 92.5%;
 }
 
@@ -41,6 +41,7 @@ a {
 .article {
     margin: 2rem 0;
     padding: 2rem;
+    max-width: 35rem;
     background-color: #ccc;
     border-radius: 4px;
 }
@@ -58,4 +59,15 @@ a {
     font-size: .95rem;
     font-weight: 400;
     opacity: .725;
+}
+
+/* Form */
+.form {
+    width: 100%;
+}
+
+.form-group {
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
 }
