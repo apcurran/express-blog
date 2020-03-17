@@ -88,3 +88,8 @@ a {
     letter-spacing: .06em;
     cursor: pointer;
 }
+
+.form-error {
+    margin: 1rem 0;
+    color: #9b2c2c;
+}
