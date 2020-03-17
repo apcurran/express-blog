@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
+const mongoose = require("mongoose");
 const morgan = require("morgan");
 const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config();
@@ -9,6 +10,11 @@ require("dotenv").config();
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
+
+// DB Setup
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "mongo connection error"));
 
 app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
