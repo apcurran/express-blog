@@ -75,7 +75,9 @@ a {
 
 .form-cancel {
     padding: .75rem 0;
+    margin-right: 1rem;
     display: inline-block;
+    text-decoration: underline;
 }
 
 .form-submit {
@@ -92,4 +94,18 @@ a {
 .form-error {
     margin: 1rem 0;
     color: #9b2c2c;
+}
+
+/* Blog Post */
+.post__date {
+    color: #718096;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: .75rem 1.5rem;
+    background-color: #ccc;
+    border-radius: 4px;
 }
