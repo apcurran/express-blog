@@ -56,7 +56,6 @@ router.get("/post/edit/:id", async (req, res) => {
 router.post("/new", async (req, res, next) => {
     req.article = new Article();
     next();
-
 }, saveArticleAndRedirect("new"));
 
 router.patch("/post/edit/:id", async (req, res, next) => {
