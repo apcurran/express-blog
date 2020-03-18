@@ -3,7 +3,7 @@
     <h1 class="post__title"><%= article.title %> </h1>
     <h3 class="post__date"><%= article.createdAt.toLocaleDateString() %></h3>
     <div class="md-content">
-        <%= article.markdown %> 
+        <%- article.sanitizedHtml %> 
     </div>
     <a href="/" class="btn-link">Back to Articles</a>
     <a href="/articles/post/edit/<%= article.id %>" class="btn-link">Edit Post</a>
