@@ -7,6 +7,10 @@
             <h2 class="article__title"><%= article.title %></h2>
             <h3 class="article__date"><%= article.createdAt.toLocaleDateString() %> </h3>
             <p class="article__description"><%= article.description %></p>
+            <a href="articles/post/<%= article.slug %>" class="btn-link">Read More</a>
+            <form method="POST" action="/articles/post/<%= article.id %>?_method=DELETE" class="form">
+                <button class="form-submit" type="submit">Delete</button>
+            </form>
         </article>
     <% }); %>
 </main>

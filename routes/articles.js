@@ -2,12 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
 
-router.get("/post/:id", async (req, res) => {
-    const article = await Article.findById(req.params.id);
+router.get("/post/:slug", async (req, res) => {
+    try {
+        const article = await Article.findOne({ slug: req.params.slug });
+    
+        if (article == null) res.redirect("/");
+    
+        res.render("articles/show-post", { title: article.title, article: article });
 
-    if (article == null) res.redirect("/");
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
 
-    res.render("articles/show-post", { title: article.title, article: article });
 });
 
 router.get("/new", (req, res) => {
@@ -24,10 +31,21 @@ router.post("/new", async (req, res, next) => {
     try {
         article = await article.save();
 
-        res.redirect(`/articles/post/${article._id}`)
+        res.redirect(`/articles/post/${article.slug}`);
     } catch (err) {
         res.render("articles/new", { title: "New Post", error: err, article: article });
 
+        console.error(err);
+        next(err);
+    }
+});
+
+router.delete("/post/:id", async (req, res, next) => {
+    try {
+        await Article.findByIdAndDelete(req.params.id);
+
+        res.redirect("/");
+    } catch (err) {
         console.error(err);
         next(err);
     }

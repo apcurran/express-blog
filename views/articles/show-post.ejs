@@ -2,10 +2,10 @@
 <main class="post">
     <h1 class="post__title"><%= article.title %> </h1>
     <h3 class="post__date"><%= article.createdAt.toLocaleDateString() %></h3>
-    <a href="/" class="btn-link">Back to Articles</a>
-    <a href="/articles/post/edit/<%= article.id %>" class="btn-link">Edit Post</a>
     <div class="md-content">
         <%= article.markdown %> 
     </div>
+    <a href="/" class="btn-link">Back to Articles</a>
+    <a href="/articles/post/edit/<%= article.id %>" class="btn-link">Edit Post</a>
 </main>
 <%- include("../partials/footer") %> 

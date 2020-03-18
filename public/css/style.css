@@ -82,6 +82,7 @@ a {
 
 .form-submit {
     padding: .75rem 2rem;
+    margin-top: 1rem;
     background-color: #4A5568;
     color: #fff;
     border: none;
@@ -106,6 +107,8 @@ a {
 .btn-link {
     display: inline-block;
     padding: .75rem 1.5rem;
-    background-color: #ccc;
+    margin-top: 1rem;
+    background-color: #4A5568;
+    color: #fff;
     border-radius: 4px;
 }
