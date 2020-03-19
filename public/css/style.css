@@ -7,14 +7,28 @@
 /* Base Styling */
 body {
     min-height: 100vh;
-    font-family: sans-serif;
     display: grid;
     grid-template-rows: auto 1fr auto;
+}
+
+body,
+a,
+input,
+textarea,
+button {
+    font-family: 'Montserrat', sans-serif;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+input,
+textarea,
+button {
+    padding: .5rem 1rem;
+    font-size: 1rem;
 }
 
 .header {
@@ -24,7 +38,7 @@ a {
 }
 
 .main {
-    margin: 3rem 1rem;
+    margin: 3rem;
     max-width: 92.5%;
 }
 
@@ -67,10 +81,14 @@ a {
 }
 
 .form-group {
-    max-width: 30rem;
+    max-width: 40rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
+}
+
+.form-group__textarea {
+    line-height: 1.6;
 }
 
 .form-cancel {
@@ -81,14 +99,15 @@ a {
 }
 
 .form-submit {
-    padding: .75rem 2rem;
     margin-top: 1rem;
-    background-color: #4A5568;
-    color: #fff;
+    padding: .5rem 0;
+    text-decoration: underline;
+    background-color: transparent;
     border: none;
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: .06em;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -113,7 +132,7 @@ a {
 
 .md-content {
     display: grid;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 0 1rem;
     max-width: 90rem;
     grid-template-columns: 3fr 12fr 5fr;
@@ -123,12 +142,11 @@ a {
 .md-content h1,
 .md-content h2,
 .md-content h3 {
-    grid-column: 1 / -1;
-    text-align: center;
+    grid-column: 2 / -2;
 }
 
 .md-content figure {
-    margin: 2rem 0;
+    margin-bottom: 1rem;
     grid-column: 1 / -1;
 }
 
@@ -167,11 +185,30 @@ a {
     border-left: 3px solid #ECC94B;
 }
 
+.post__controls {
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid hsl(214, 32%, 90%);
+}
+
 .btn-link {
     display: inline-block;
     padding: .75rem 1.5rem;
     margin-top: 1rem;
-    background-color: #4A5568;
-    color: #fff;
+    background-color: transparent;
+    border: 1px solid #4a5568;
     border-radius: 4px;
+    transition: 
+        background-color 125ms ease,
+        color 125ms ease;
+}
+
+.btn-link:hover {
+    background-color: #4a5568;
+    color: #fff;
+}
+
+.btn-link:first-of-type {
+    margin-right: 1rem;
 }
