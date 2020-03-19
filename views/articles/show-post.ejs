@@ -1,7 +1,7 @@
 <%- include("../partials/header") %> 
 <main class="post">
     <h1 class="post__title"><%= article.title %> </h1>
-    <h3 class="post__date"><%= article.createdAt.toLocaleDateString() %></h3>
+    <h3 class="post__date"><%= article.createdDateFormatted %></h3>
     <div class="md-content">
         <%- article.sanitizedHtml %> 
     </div>

@@ -6,7 +6,7 @@
         <a href="/articles/post/edit/<%= article.id %>" class="new-article">Edit Article</a>
         <article class="article">
             <h2 class="article__title"><%= article.title %></h2>
-            <h3 class="article__date"><%= article.createdAt.toLocaleDateString() %> </h3>
+            <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
             <p class="article__description"><%= article.description %></p>
             <a href="articles/post/<%= article.slug %>" class="btn-link">Read More</a>
             <form method="POST" action="/articles/post/<%= article.id %>?_method=DELETE" class="form">

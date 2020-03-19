@@ -102,10 +102,69 @@ a {
     color: #718096;
     font-size: 1rem;
     font-weight: 400;
+    text-align: center;
 }
 
-.md-content h1 {
-    color: darkblue;
+.post__title {
+    margin-top: 1.75rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.md-content {
+    display: grid;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 90rem;
+    grid-template-columns: 3fr 12fr 5fr;
+    grid-gap: 1rem 1.5rem;
+}
+
+.md-content h1,
+.md-content h2,
+.md-content h3 {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.md-content figure {
+    margin: 2rem 0;
+    grid-column: 1 / -1;
+}
+
+.md-content figure img {
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
+}
+
+.md-content p img {
+    width: 100%;
+}
+
+.md-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    grid-column: 2 / -2;
+}
+
+.md-content blockquote {
+    padding: 1rem;
+    grid-row: span 5;
+    align-self: start;
+    background-color: #E2E8F0;
+}
+
+.md-content blockquote:nth-of-type(odd) {
+    grid-column: 1 / span 1;
+    text-align: right;
+    border-right: 3px solid #ECC94B;
+}
+
+.md-content blockquote:nth-of-type(even) {
+    grid-column: span 1 / -1;
+    text-align: left;
+    border-left: 3px solid #ECC94B;
 }
 
 .btn-link {

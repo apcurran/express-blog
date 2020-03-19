@@ -4,6 +4,7 @@ const slugify = require("slugify");
 const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
 const dompurify = createDOMPurify(new JSDOM("").window);
+const moment = require("moment");
 
 const ArticleSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -26,6 +27,12 @@ ArticleSchema
         }
 
         next();
+    });
+
+ArticleSchema
+    .virtual("createdDateFormatted")
+    .get(function() {
+        return moment(this.createdAt).format("MMMM Do, YYYY");
     });
 
 module.exports = mongoose.model("Article", ArticleSchema);
