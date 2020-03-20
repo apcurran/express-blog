@@ -1,0 +1,16 @@
+<% if (typeof error !== "undefined") { %>
+    <p class="form-error"><%= error.message %> </p>
+<% } %> 
+<% if (typeof usernameAlreadyExists !== "undefined") { %>
+    <p class="form-error"><%= usernameAlreadyExists %> </p>
+<% } %> 
+<div class="form-group">
+    <label for="username" class="form-group__label">Username</label>
+    <input value="<%= (typeof admin === "undefined" ? "" : admin.username) %>" type="text" name="username" class="form-group__input" id="username" required>
+</div>
+<div class="form-group">
+    <label for="password" class="form-group__label">Password</label>
+    <input value="<%= (typeof admin === "undefined" ? "" : admin.password) %>" type="password" name="password" class="form-group__input" id="password" required>
+</div>
+<a href="/" class="form-cancel">Cancel</a>
+<button type="submit" class="form-submit">Submit</button>
