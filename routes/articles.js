@@ -40,7 +40,7 @@ router.get("/post/:slug", async (req, res) => {
 });
 
 router.get("/new", checkAuthenticated, (req, res) => {
-    res.render("articles/new", { title: "New Post", article: new Article() });
+    res.render("articles/new", { title: "New Post" });
 });
 
 router.get("/post/edit/:id", async (req, res) => {
