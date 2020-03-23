@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
+const initializePassport = require("./config/passport-config");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config();
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Passport Setup
+initializePassport(); // Custom function
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -40,10 +42,12 @@ app.use(passport.session());
 const articlesRouter = require("./routes/articles");
 const indexRouter = require("./routes/index");
 const registerRouter = require("./routes/register");
+const loginRouter = require("./routes/login");
 
 // Initialize routes
 app.use("/", indexRouter);
 app.use("/articles", articlesRouter);
 app.use("/account/register", registerRouter);
+app.use("/account/login", loginRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));

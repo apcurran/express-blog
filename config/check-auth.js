@@ -12,3 +12,8 @@ function checkNotAuthenticated(req, res, next) {
 
     return res.render("account/login-form", { title: "Login to Account", admin: req.admin });
 }
+
+module.exports = {
+    checkAuthenticated,
+    checkNotAuthenticated
+};

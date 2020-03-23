@@ -1,6 +1,10 @@
 <%- include("../partials/header") %> 
 <main class="main">
     <h1 class="main__title">Blog Posts</h1>
+    <% if (admin) { %>
+        <h2>Welcome back, <%= admin.username %>!</h2>
+        <a href="/logout">Log out</a>
+    <% } %> 
     <% articles.forEach(article => { %>
         <a href="/articles/new" class="new-article">New Article</a>
         <a href="/articles/post/edit/<%= article.id %>" class="new-article">Edit Article</a>
