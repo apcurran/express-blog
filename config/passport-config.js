@@ -26,5 +26,5 @@ passport.serializeUser((admin, done) => {
 passport.deserializeUser((id, done) => {
     Admin.findById(id, (err, admin) => {
         done(err, admin);
-    })
+    });
 });
