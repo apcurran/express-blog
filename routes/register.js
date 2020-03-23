@@ -9,10 +9,14 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res, next) => {
     try {
+        if (req.body.code !== process.env.ADMIN_SECRET) {
+            return res.render("account/register-form", { title: "Register an Admin Account", msg: "Incorrect Admin Code", user: req.body });
+        }
+
         const usernameExists = await Admin.findOne({ username: req.body.username });
 
         if (usernameExists) {
-            return res.render("account/register-form", { title: "Register an Admin Account", usernameAlreadyExists: "Username already exists" })
+            return res.render("account/register-form", { title: "Register an Admin Account", msg: "Username already exists", user: req.body });
         }
 
         // Otherwise, hash pw and save admin to db
@@ -24,6 +28,7 @@ router.post("/", async (req, res, next) => {
         });
 
         await admin.save();
+        
         res.redirect("/account/login");
 
     } catch (err) {
