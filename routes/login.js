@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const { checkNotAuthenticated } = require("../config/check-auth");
 
-router.get("/", (req, res) => {
+router.get("/", checkNotAuthenticated, (req, res) => {
     res.render("account/login-form", { title: "Login to Account", user: req.user });
 });
 

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
+const { checkAuthenticated } = require("../config/check-auth");
 
 function saveArticleAndRedirect(path) {
     return async (req, res) => {
@@ -38,7 +39,7 @@ router.get("/post/:slug", async (req, res) => {
 
 });
 
-router.get("/new", (req, res) => {
+router.get("/new", checkAuthenticated, (req, res) => {
     res.render("articles/new", { title: "New Post", article: new Article() });
 });
 
@@ -53,17 +54,17 @@ router.get("/post/edit/:id", async (req, res) => {
     }
 });
 
-router.post("/new", async (req, res, next) => {
+router.post("/new", checkAuthenticated, async (req, res, next) => {
     req.article = new Article();
     next();
 }, saveArticleAndRedirect("new"));
 
-router.patch("/post/edit/:id", async (req, res, next) => {
+router.patch("/post/edit/:id", checkAuthenticated, async (req, res, next) => {
     req.article = await Article.findById(req.params.id);
     next();
 }, saveArticleAndRedirect("edit"));
 
-router.delete("/post/:id", async (req, res, next) => {
+router.delete("/post/:id", checkAuthenticated, async (req, res, next) => {
     try {
         await Article.findByIdAndDelete(req.params.id);
 

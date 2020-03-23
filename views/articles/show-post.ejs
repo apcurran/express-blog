@@ -6,7 +6,9 @@
         <%- article.sanitizedHtml %> 
         <div class="post__controls">
             <a href="/" class="btn-link">Back to Articles</a>
-            <a href="/articles/post/edit/<%= article.id %>" class="btn-link">Edit Post</a>
+            <% if (typeof user !== "undefined") { %>
+                <a href="/articles/post/edit/<%= article.id %>" class="btn-link">Edit Post</a>
+            <% } %> 
         </div>
     </section>
 </main>
