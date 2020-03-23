@@ -6,13 +6,13 @@ const bcrypt = require("bcrypt");
 function initializePassport() {
     passport.use(
         new LocalStrategy((username, password, done) => {
-            Admin.findOne({ username: username }, (err, admin) => {
+            Admin.findOne({ username: username }, (err, user) => {
                 if (err) return done(err);
     
-                if (!admin) return done(null, false, { error: "Incorrect username" });
+                if (!user) return done(null, false, { error: "Incorrect username" });
     
-                bcrypt.compare(password, admin.password, (err, res) => {
-                    if (res) return done(null, admin);
+                bcrypt.compare(password, user.password, (err, res) => {
+                    if (res) return done(null, user);
     
                     return done(null, false, { error: "Incorrect password" });
                 })
@@ -20,13 +20,13 @@ function initializePassport() {
         })
     );
     
-    passport.serializeUser((admin, done) => {
-        done(null, admin.id);
+    passport.serializeUser((user, done) => {
+        done(null, user.id);
     });
     
     passport.deserializeUser((id, done) => {
-        Admin.findById(id, (err, admin) => {
-            done(err, admin);
+        Admin.findById(id, (err, user) => {
+            done(err, user);
         });
     });
 }

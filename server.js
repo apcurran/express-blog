@@ -43,11 +43,13 @@ const articlesRouter = require("./routes/articles");
 const indexRouter = require("./routes/index");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
+const logoutRouter = require("./routes/logout");
 
 // Initialize routes
 app.use("/", indexRouter);
 app.use("/articles", articlesRouter);
 app.use("/account/register", registerRouter);
 app.use("/account/login", loginRouter);
+app.use("/account/logout", logoutRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));

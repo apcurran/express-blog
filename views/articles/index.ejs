@@ -1,9 +1,9 @@
 <%- include("../partials/header") %> 
 <main class="main">
     <h1 class="main__title">Blog Posts</h1>
-    <% if (admin) { %>
-        <h2>Welcome back, <%= admin.username %>!</h2>
-        <a href="/logout">Log out</a>
+    <% if (user) { %>
+        <h2>Welcome back, <%= user.username %>!</h2>
+        <a href="/account/logout">Log out</a>
     <% } %> 
     <% articles.forEach(article => { %>
         <a href="/articles/new" class="new-article">New Article</a>
