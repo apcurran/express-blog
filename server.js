@@ -3,6 +3,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const session = require("express-session");
+const passport = require("passport");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config();
@@ -24,6 +26,15 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+// Passport Setup
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Import routes
 const articlesRouter = require("./routes/articles");
