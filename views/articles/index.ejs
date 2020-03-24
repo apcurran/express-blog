@@ -1,29 +1,31 @@
 <%- include("../partials/header") %> 
 <main class="main">
-    <h1 class="main__title">Blog Posts</h1>
+    <h1 class="main__title">Recent Posts</h1>
     <% if (user) { %>
         <h2>Welcome back, <%= user.username %>!</h2>
         <a href="/account/logout">Log out</a>
-    <% } %> 
+        <a href="/articles/new" class="new-article">New Article</a>
+    <% } %>
     <% articles.forEach(article => { %>
         <% if (user) { %>
-            <a href="/articles/new" class="new-article">New Article</a>
-            <a href="/articles/post/edit/<%= article.id %>" class="new-article">Edit Article</a>
             <article class="article">
-                <h2 class="article__title"><%= article.title %></h2>
+                <a href="/articles/post/edit/<%= article.id %>" class="new-article">Edit Article</a>
+                <a href="articles/post/<%= article.slug %>" class="btn-link">
+                    <h2 class="article__title"><%= article.title %></h2>
+                </a>
                 <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
                 <p class="article__description"><%= article.description %></p>
-                <a href="articles/post/<%= article.slug %>" class="btn-link">Read More</a>
                 <form method="POST" action="/articles/post/<%= article.id %>?_method=DELETE" class="form">
                     <button class="form-submit" type="submit">Delete</button>
                 </form>
             </article>
         <% } else { %>
             <article class="article">
-                <h2 class="article__title"><%= article.title %></h2>
+                <a href="articles/post/<%= article.slug %>">
+                    <h2 class="article__title"><%= article.title %></h2>
+                </a>
                 <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
                 <p class="article__description"><%= article.description %></p>
-                <a href="articles/post/<%= article.slug %>" class="btn-link">Read More</a>
             </article>
         <% } %> 
     <% }); %>
