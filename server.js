@@ -8,6 +8,8 @@ const passport = require("passport");
 const initializePassport = require("./config/passport-config");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
+const compression = require("compression");
+const helmet = require("helmet");
 require("dotenv").config();
 
 // Dev logging
@@ -21,6 +23,8 @@ mongoose.set("useCreateIndex", true)
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
+app.use(helmet());
+app.use(compression());
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
