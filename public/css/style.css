@@ -30,10 +30,13 @@ a {
 }
 
 input,
-textarea,
 button {
-    padding: .5rem 1rem;
+    padding: .45rem .5rem;
     font-size: 1rem;
+}
+
+textarea {
+    padding: .75rem 1.25rem;
 }
 
 .header {
@@ -79,6 +82,10 @@ button {
     margin-right: .25rem;
     text-transform: uppercase;
     letter-spacing: .06em;
+}
+
+.new-title {
+    margin-bottom: 1rem;
 }
 
 .article {
@@ -146,6 +153,10 @@ button {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
+}
+
+.form-group__label {
+    margin-bottom: .5rem;
 }
 
 .form-group__textarea {
@@ -286,3 +297,99 @@ button {
 .btn-link:first-of-type {
     margin-right: 1rem;
 }
+
+@media screen and (max-width: 60em) {
+    .header {
+        padding: 2rem 3rem;
+    }
+
+    .header__title {
+        font-size: 1.5rem;
+    }
+    
+    /* Home page */
+    .main {
+        margin: 2.5rem 3rem;
+    }
+
+    .main__title {
+        font-size: 1.4rem;
+    }
+
+    .article__title {
+        font-size: 1.25rem;
+    }
+
+    .article__date {
+        font-size: .95rem;
+    }
+
+    /* Post page */
+    .post__title {
+        font-size: 1.75rem;
+    }
+
+    .post__date {
+        font-size: .975rem;
+    }
+}
+
+@media screen and (max-width: 36.5em) {
+    .header {
+        padding: 1rem;
+    }
+
+    .header__title {
+        font-size: 1.05rem;
+    }
+
+    .nav__link {
+        margin: 0;
+        padding: .15rem .25rem;
+        font-size: .935rem;
+    }
+    
+    /* Home page */
+    .main {
+        margin: 1.15rem 1rem;
+    }
+
+    .main__title {
+        font-size: 1.25rem;
+    }
+
+    .article__title {
+        font-size: 1.25rem;
+    }
+
+    .article__date {
+        font-size: .95rem;
+    }
+
+    /* Post page */
+    .post__title {
+        font-size: 1.5rem;
+    }
+
+    .post__date {
+        font-size: .975rem;
+    }
+
+    .md-content {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-link::before {
+        content: none;
+    }
+
+    /* Admin home page */
+    .main__admin-greeting {
+        font-size: 1.25rem;
+    }
+
+    .new-title {
+        font-size: 1.4rem;
+    }
+}
+
