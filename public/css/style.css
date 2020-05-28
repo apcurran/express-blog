@@ -159,6 +159,12 @@ textarea {
     margin-bottom: .5rem;
 }
 
+.form-group__input,
+.form-group__textarea {
+    border: 1px solid #a0aec0;
+    border-radius: 4px;
+}
+
 .form-group__textarea {
     line-height: 1.6;
 }

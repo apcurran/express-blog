@@ -12,6 +12,13 @@ const compression = require("compression");
 const helmet = require("helmet");
 require("dotenv").config();
 
+// Import routes
+const articlesRouter = require("./routes/articles");
+const indexRouter = require("./routes/index");
+const registerRouter = require("./routes/register");
+const loginRouter = require("./routes/login");
+const logoutRouter = require("./routes/logout");
+
 // Dev logging
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
@@ -41,13 +48,11 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.isAuthenticated();
 
-// Import routes
-const articlesRouter = require("./routes/articles");
-const indexRouter = require("./routes/index");
-const registerRouter = require("./routes/register");
-const loginRouter = require("./routes/login");
-const logoutRouter = require("./routes/logout");
+    next();
+});
 
 // Initialize routes
 app.use("/", indexRouter);

@@ -3,7 +3,6 @@
     <h1 class="main__title">Recent Posts</h1>
     <% if (user) { %>
         <h2 class="main__admin-greeting">Welcome back, <%= user.username %>!</h2>
-        <a href="/account/logout" class="btn-logout">Log Out</a>
         <a href="/articles/new" class="new-article">New Article</a>
     <% } %>
     <% articles.forEach(article => { %>

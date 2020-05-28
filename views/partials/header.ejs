@@ -3,7 +3,11 @@
         <h1 class="header__title">Alex Curran Blog</h1>
     </a>
     <nav class="nav">
-        <a href="/account/login" class="nav__link">Log In</a>
-        <a href="/account/register" class="nav__link">Register</a>
+        <% if (isAuthenticated) { %>
+            <a href="/account/logout" class="nav__link">Log Out</a>
+        <% } else { %>
+            <a href="/account/login" class="nav__link">Log In</a>
+            <a href="/account/register" class="nav__link">Register</a>
+        <% } %> 
     </nav>
 </header>
