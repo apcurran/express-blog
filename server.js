@@ -49,6 +49,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
+    // Set global view variable for conditional templating when logged in.
     res.locals.isAuthenticated = req.isAuthenticated();
 
     next();
@@ -61,4 +62,8 @@ app.use("/account/register", registerRouter);
 app.use("/account/login", loginRouter);
 app.use("/account/logout", logoutRouter);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
+app.listen(PORT, () =>  {
+    if (process.env.NODE_ENV === "development") {
+        console.log(`Server running on port ${PORT}.`);
+    } 
+});

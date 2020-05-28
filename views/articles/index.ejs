@@ -6,29 +6,21 @@
         <a href="/articles/new" class="new-article">New Article</a>
     <% } %>
     <% articles.forEach(article => { %>
-        <% if (user) { %>
-            <article class="article">
-                <a href="articles/post/<%= article.slug %>">
-                    <h2 class="article__title"><%= article.title %></h2>
-                </a>
-                <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
-                <p class="article__description"><%= article.description %></p>
+        <article class="article">
+            <a href="articles/post/<%= article.slug %>">
+                <h2 class="article__title"><%= article.title %></h2>
+            </a>
+            <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
+            <p class="article__description"><%= article.description %></p>
+            <% if (user) { %>
                 <div class="article__controls">
                     <a href="/articles/post/edit/<%= article.id %>" class="article__edit">Edit</a>
                     <form method="POST" action="/articles/post/<%= article.id %>?_method=DELETE" class="form">
                         <button class="form-submit" type="submit">Delete</button>
                     </form>
                 </div>
-            </article>
-        <% } else { %>
-            <article class="article">
-                <a href="articles/post/<%= article.slug %>">
-                    <h2 class="article__title"><%= article.title %></h2>
-                </a>
-                <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
-                <p class="article__description"><%= article.description %></p>
-            </article>
-        <% } %> 
+            <% } %> 
+        </article>
     <% }); %>
 </main>
 <%- include("../partials/footer") %> 
