@@ -177,6 +177,7 @@ textarea {
 }
 
 .form-submit {
+    padding: 0;
     border: none;
     background-color: transparent;
     text-transform: uppercase;
@@ -239,7 +240,7 @@ textarea {
 }
 
 .md-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     line-height: 1.6;
     grid-column: 2 / -2;
 }
@@ -278,6 +279,7 @@ textarea {
     text-decoration: underline;
 }
 
+.link,
 .btn-link {
     position: relative;
     display: inline-block;
@@ -303,6 +305,29 @@ textarea {
 .btn-link:first-of-type {
     margin-right: 1rem;
 }
+
+/* Comments */
+.post__comments__title {
+    margin: 2rem 0 1.25rem 0;
+}
+
+.post__comments {
+    grid-column: 2 / -2;
+}
+
+.post__comments__list {
+    list-style: none;
+}
+
+.post__comments__list__comment {
+    margin-bottom: 3rem;
+}
+
+.post__comments__list__author {
+    margin-bottom: .2rem;
+    color: var(--dark-grey);
+}
+
 
 @media screen and (max-width: 60em) {
     .header {

@@ -75,9 +75,38 @@ router.delete("/post/:id", checkAuthenticated, async (req, res, next) => {
     }
 });
 
-// Add comments
+// POST comment
 router.post("/post/:id/comment", async (req, res, next) => {
     try {
+        const article = await Article.findById(req.params.id);
+        // Add new comment
+        const newComment = { name: req.body.name, text: req.body.comment };
+
+        article.comments.push(newComment);
+
+        await article.save();
+
+        // Show the article post with the new comment added
+        res.render("articles/show-post", { title: article.title, article: article });
+        
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+});
+
+// DELETE comment
+router.delete("/post/:id/comment/:comment_id", checkAuthenticated, async (req, res, next) => {
+    try {
+        const article = await Article.findById(req.params.id);
+        const comment_id = req.params.comment_id;
+
+        article.comments.id(comment_id).remove();
+
+        await article.save();
+
+        // Show the article post with the comment now deleted
+        res.render("articles/show-post", { title: article.title, article: article });
         
     } catch (err) {
         console.error(err);
