@@ -75,4 +75,14 @@ router.delete("/post/:id", checkAuthenticated, async (req, res, next) => {
     }
 });
 
+// Add comments
+router.post("/post/:id/comment", async (req, res, next) => {
+    try {
+        
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+});
+
 module.exports = router;
