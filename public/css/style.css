@@ -179,17 +179,15 @@ textarea {
 }
 
 .form-submit {
-    padding: 0;
+    padding: .5rem 1.1rem;
     border: none;
-    background-color: transparent;
+    border-radius: 4px;
+    background-color: var(--dark-grey);
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: .06em;
     font-size: 1rem;
     cursor: pointer;
-}
-
-.form-submit:hover {
-    text-decoration: underline;
 }
 
 .form-error {
