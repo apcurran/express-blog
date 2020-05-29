@@ -6,6 +6,12 @@ const { JSDOM } = require("jsdom");
 const dompurify = createDOMPurify(new JSDOM("").window);
 const moment = require("moment");
 
+const CommentsSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    text: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now }
+});
+
 const ArticleSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
@@ -13,13 +19,7 @@ const ArticleSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
     slug: { type: String, unique: true, required: true },
     sanitizedHtml: { type: String, required: true },
-    comments: [
-        {
-            name: { type: String, required: true },
-            text: { type: String, required: true },
-            createdAt: { type: Date, default: Date.now }
-        }
-    ]
+    comments: [CommentsSchema]
 });
 
 ArticleSchema
@@ -38,6 +38,12 @@ ArticleSchema
 
 ArticleSchema
     .virtual("createdDateFormatted")
+    .get(function() {
+        return moment(this.createdAt).format("MMMM Do, YYYY");
+    });
+
+CommentsSchema
+    .virtual("commentDateFormatted")
     .get(function() {
         return moment(this.createdAt).format("MMMM Do, YYYY");
     });

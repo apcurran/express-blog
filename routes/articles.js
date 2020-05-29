@@ -79,15 +79,15 @@ router.delete("/post/:id", checkAuthenticated, async (req, res, next) => {
 router.post("/post/:id/comment", async (req, res, next) => {
     try {
         const article = await Article.findById(req.params.id);
-        // Add new comment
         const newComment = { name: req.body.name, text: req.body.comment };
-
+        
+        // Add new comment
         article.comments.push(newComment);
 
         await article.save();
 
-        // Show the article post with the new comment added
-        res.render("articles/show-post", { title: article.title, article: article });
+        // Redirect to the article post with the new comment added
+        res.redirect(`/articles/post/${article.slug}`);
         
     } catch (err) {
         console.error(err);
@@ -106,7 +106,7 @@ router.delete("/post/:id/comment/:comment_id", checkAuthenticated, async (req, r
         await article.save();
 
         // Show the article post with the comment now deleted
-        res.render("articles/show-post", { title: article.title, article: article });
+        res.redirect(`/articles/post/${article.slug}`);
         
     } catch (err) {
         console.error(err);

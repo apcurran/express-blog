@@ -110,6 +110,7 @@ textarea {
 
 .article__description {
     margin-top: .75rem;
+    margin-bottom: .25rem;
 }
 
 .article__controls {
@@ -121,6 +122,7 @@ textarea {
 .article__edit {
     text-transform: uppercase;
     letter-spacing: .06em;
+    margin-right: 1rem;
 }
 
 .article__edit:hover {
@@ -326,6 +328,11 @@ textarea {
 .post__comments__list__author {
     margin-bottom: .2rem;
     color: var(--dark-grey);
+}
+
+.post__comments__list__author span {
+    font-size: .95rem;
+    font-weight: 400;
 }
 
 

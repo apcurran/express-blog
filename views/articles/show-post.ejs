@@ -27,7 +27,7 @@
                 <ul class="post__comments__list">
                     <% article.comments.forEach(comment => { %>
                         <li class="post__comments__list__comment">
-                            <h4 class="post__comments__list__author"><%= comment.name %></h4>
+                            <h4 class="post__comments__list__author"><%= comment.name %> - <span><%= comment.commentDateFormatted %></span></h4>
                             <p class="post__comments__list__text"><%= comment.text %></p>
                             <% if (isAuthenticated) { %>
                                 <form method="POST" action="/articles/post/<%= article.id %>/comment/<%= comment._id %>?_method=DELETE" class="form">
