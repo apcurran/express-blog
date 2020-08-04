@@ -1,3 +1,7 @@
+"use strict";
+
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,7 +14,6 @@ const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
 const compression = require("compression");
 const helmet = require("helmet");
-require("dotenv").config();
 
 // Import routes
 const articlesRouter = require("./routes/articles");

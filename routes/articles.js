@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
@@ -82,7 +84,7 @@ router.post("/post/:id/comment", async (req, res, next) => {
         const newComment = { name: req.body.name, text: req.body.comment };
         
         // Add new comment
-        article.comments.push(newComment);
+        article.comments.unshift(newComment);
 
         await article.save();
 
