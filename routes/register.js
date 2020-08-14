@@ -15,7 +15,7 @@ router.post("/", async (req, res, next) => {
             return res.render("account/register-form", { title: "Register an Admin Account", msg: "Incorrect Admin Code", user: req.body });
         }
 
-        const usernameExists = await Admin.findOne({ username: req.body.username });
+        const usernameExists = await Admin.findOne({ username: req.body.username }).lean();
 
         if (usernameExists) {
             return res.render("account/register-form", { title: "Register an Admin Account", msg: "Username already exists", user: req.body });
