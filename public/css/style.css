@@ -225,7 +225,7 @@ textarea {
 }
 
 .md-content figure {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     grid-column: 1 / -1;
 }
 
@@ -235,11 +235,12 @@ textarea {
     object-fit: cover;
 }
 
-.md-content p img {
-    width: 100%;
+.md-content figure p {
+    /* Remove extra line height added by Marked inserting a p element to HTML */
+    line-height: 0;
 }
 
-.md-content p {
+.md-content > p {
     margin-bottom: 1.25rem;
     line-height: 1.6;
     grid-column: 2 / -2;
