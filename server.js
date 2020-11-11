@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 const passport = require("passport");
 const initializePassport = require("./config/passport-config");
 const methodOverride = require("method-override");
@@ -27,9 +28,14 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
+const store = new MongoDBStore({
+    uri: process.env.DB_URI,
+    collection: "sessions"
+});
+
 // DB Setup
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set("useCreateIndex", true)
+mongoose.set("useCreateIndex", true);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
@@ -47,7 +53,8 @@ initializePassport(); // Custom function
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: store // MongoDB session store
 }));
 app.use(passport.initialize());
 app.use(passport.session());
