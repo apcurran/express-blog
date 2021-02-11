@@ -109,8 +109,7 @@ textarea {
 }
 
 .article__description {
-    margin-top: .75rem;
-    margin-bottom: .25rem;
+    margin: .75rem 0;
 }
 
 .article__controls {
@@ -226,6 +225,10 @@ textarea {
 
 .md-content figure {
     margin-bottom: 2rem;
+    grid-column: 2 / -2;
+}
+
+.md-content figure.full-width {
     grid-column: 1 / -1;
 }
 
@@ -267,6 +270,7 @@ textarea {
 
 .post__controls {
     padding-top: 1.5rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     border-top: 1px solid hsl(214, 32%, 90%);
@@ -308,6 +312,10 @@ textarea {
 }
 
 /* Comments */
+.form--comments {
+    margin-bottom: 5rem;
+}
+
 .post__comments__title {
     margin: 2rem 0 1.25rem 0;
 }
@@ -332,6 +340,10 @@ textarea {
 .post__comments__list__author span {
     font-size: .95rem;
     font-weight: 400;
+}
+
+.post__comments__list__text {
+    margin-bottom: .75rem;
 }
 
 

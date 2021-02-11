@@ -11,7 +11,7 @@
             <% } %> 
         </div>
         <section class="post__comments">
-            <form method="POST" action="/articles/post/<%= article.id %>/comment" class="form">
+            <form method="POST" action="/articles/post/<%= article.id %>/comment" class="form form--comments">
                 <div class="post__comments__add-group form-group">
                     <label for="name">Name:</label>
                     <input type="text" name="name" class="form-group__input" id="name" required>
