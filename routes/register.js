@@ -2,8 +2,9 @@
 
 const express = require("express");
 const router = express.Router();
-const Admin = require("../models/Admin");
 const bcrypt = require("bcrypt");
+
+const Admin = require("../models/Admin");
 
 router.get("/", (req, res) => {
     res.render("account/register-form", { title: "Register an Admin Account" });
@@ -24,6 +25,7 @@ router.post("/", async (req, res, next) => {
         // Otherwise, hash pw and save admin to db
         const saltRounds = 12;
         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
         const admin = new Admin({
             username: req.body.username,
             password: hashedPassword

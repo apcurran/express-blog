@@ -2,6 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
+
 const Article = require("../models/Article");
 const { checkAuthenticated } = require("../config/check-auth");
 
