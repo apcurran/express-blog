@@ -1,7 +1,7 @@
 <%- include("../partials/header")  %> 
 <main class="main">
     <h1 class="title">Edit Article</h1>
-    <form method="POST" action="/articles/post/edit/<%= article.id %>?_method=PATCH" class="form">
+    <form method="POST" action="/articles/post/edit/<%= article._id %>?_method=PATCH" class="form">
         <%- include("../partials/form-fields") %> 
     </form>
 </main>
