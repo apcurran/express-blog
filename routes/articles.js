@@ -101,8 +101,8 @@ router.post("/post/:id/comment", async (req, res, next) => {
 // DELETE comment
 router.delete("/post/:id/comment/:comment_id", checkAuthenticated, async (req, res, next) => {
     try {
-        const article = await Article.findById(req.params.id);
-        const comment_id = req.params.comment_id;
+        const { id, comment_id } = req.params;
+        const article = await Article.findById(id);
 
         article.comments.id(comment_id).remove();
 
