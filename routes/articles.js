@@ -50,7 +50,6 @@ router.get("/post/edit/:id", async (req, res) => {
     try {
         const article = await Article.findById(req.params.id).lean();
         
-        console.log(article);
         res.render("articles/edit", { title: "New Post", article: article });
     } catch (err) {
         console.error(err);
