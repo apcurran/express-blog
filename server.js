@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const session = require("express-session");
+const flash = require("express-flash");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const passport = require("passport");
 const initializePassport = require("./config/passport-config");
@@ -54,8 +55,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: store // MongoDB session store
+    store: store, // MongoDB session store
+    cookie: { maxAge: 60000 }
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {

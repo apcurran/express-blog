@@ -1,5 +1,5 @@
-<% if (typeof error !== "undefined") { %>
-    <p class="form-error"><%= error.message %> </p>
+<% if (locals.error) { %>
+    <p class="form-error"><%= error %></p>
 <% } %> 
 <% if (typeof msg !== "undefined") { %>
     <p class="form-error"><%= msg %> </p>
@@ -12,9 +12,11 @@
     <label for="password" class="form-group__label">Password</label>
     <input value="<%= (typeof user === "undefined" ? "" : user.password) %>" type="password" name="password" class="form-group__input" id="password" required>
 </div>
-<div class="form-group">
-    <label for="code" class="form-group__label">Admin Code</label>
-    <input value="<%= (typeof user === "undefined" ? "" : user.code) %>" type="password" name="code" class="form-group__input" id="code" required>
-</div>
+<% if (!locals.loginForm) { %>
+    <div class="form-group">
+        <label for="code" class="form-group__label">Admin Code</label>
+        <input value="<%= (typeof user === "undefined" ? "" : user.code) %>" type="password" name="code" class="form-group__input" id="code" required>
+    </div>
+<% } %>
 <a href="/" class="form-cancel">Cancel</a>
 <button type="submit" class="form-submit">Submit</button>

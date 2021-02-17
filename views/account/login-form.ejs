@@ -2,7 +2,7 @@
 <main class="main">
     <h1 class="main__title">Log In</h1>
     <form action="/account/login" method="POST" class="form">
-        <%- include("../partials/account-form-fields") %> 
+        <%- include("../partials/account-form-fields", { loginForm: true, error: locals.error ? error : "" }) %>
     </form>
 </main>
 <%- include("../partials/footer") %> 
