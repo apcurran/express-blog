@@ -1,8 +1,8 @@
 <% if (locals.error) { %>
     <p class="form-error"><%= error %></p>
 <% } %> 
-<% if (typeof msg !== "undefined") { %>
-    <p class="form-error"><%= msg %> </p>
+<% if (messages) { %>
+    <p class="form-error"><%= messages.error %> </p>
 <% } %> 
 <div class="form-group">
     <label for="username" class="form-group__label">Username</label>
