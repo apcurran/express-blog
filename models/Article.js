@@ -3,10 +3,10 @@
 const mongoose = require("mongoose");
 const marked = require("marked");
 const slugify = require("slugify");
-const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
-const dompurify = createDOMPurify(new JSDOM("").window);
 const moment = require("moment");
+const createDOMPurify = require("dompurify");
+const dompurify = createDOMPurify(new JSDOM("").window);
 
 const CommentsSchema = new mongoose.Schema({
     name: { type: String, required: true },
