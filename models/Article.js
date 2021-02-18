@@ -41,13 +41,13 @@ ArticleSchema
 ArticleSchema
     .virtual("createdDateFormatted")
     .get(function() {
-        return moment(this.createdAt).format("MMMM Do, YYYY");
+        return new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(this.createdAt);
     });
 
 CommentsSchema
     .virtual("commentDateFormatted")
     .get(function() {
-        return moment(this.createdAt).format("MMMM Do, YYYY");
+        return new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(this.createdAt);
     });
 
 module.exports = mongoose.model("Article", ArticleSchema);
