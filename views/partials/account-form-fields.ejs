@@ -3,19 +3,19 @@
 <% } %> 
 <% if (messages) { %>
     <p class="form-error"><%= messages.error %> </p>
-<% } %> 
+<% } %>
 <div class="form-group">
     <label for="username" class="form-group__label">Username</label>
-    <input value="<%= (typeof user === "undefined" ? "" : user.username) %>" type="text" name="username" class="form-group__input" id="username" required>
+    <input value="<%= locals.username ? username : "" %>" type="text" name="username" class="form-group__input" id="username" required>
 </div>
 <div class="form-group">
     <label for="password" class="form-group__label">Password</label>
-    <input value="<%= (typeof user === "undefined" ? "" : user.password) %>" type="password" name="password" class="form-group__input" id="password" required>
+    <input value="<%= locals.password ? password : "" %>" type="password" name="password" class="form-group__input" id="password" required>
 </div>
 <% if (!locals.loginForm) { %>
     <div class="form-group">
         <label for="code" class="form-group__label">Admin Code</label>
-        <input value="<%= (typeof user === "undefined" ? "" : user.code) %>" type="password" name="code" class="form-group__input" id="code" required>
+        <input value="<%= locals.code ? code : "" %>" type="password" name="code" class="form-group__input" id="code" required>
     </div>
 <% } %>
 <a href="/" class="form-cancel">Cancel</a>

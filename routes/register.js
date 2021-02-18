@@ -5,21 +5,22 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 
 const Admin = require("../models/Admin");
+const { validateRegisterFields } = require("../middleware/validate-user");
 
 router.get("/", (req, res) => {
     res.render("account/register-form", { title: "Register an Admin Account" });
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", validateRegisterFields, async (req, res, next) => {
     try {
         if (req.body.code !== process.env.ADMIN_SECRET) {
-            return res.render("account/register-form", { title: "Register an Admin Account", msg: "Incorrect Admin Code", user: req.body });
+            return res.render("account/register-form", { title: "Register an Admin Account", error: "Incorrect Admin Code", user: req.body });
         }
 
         const usernameExists = await Admin.findOne({ username: req.body.username }).lean();
 
         if (usernameExists) {
-            return res.render("account/register-form", { title: "Register an Admin Account", msg: "Username already exists", user: req.body });
+            return res.render("account/register-form", { title: "Register an Admin Account", error: "Username already exists", user: req.body });
         }
 
         // Otherwise, hash pw and save admin to db

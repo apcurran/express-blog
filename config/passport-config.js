@@ -2,8 +2,9 @@
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const Admin = require("../models/Admin");
 const bcrypt = require("bcrypt");
+
+const Admin = require("../models/Admin");
 
 function initializePassport() {
     passport.use(

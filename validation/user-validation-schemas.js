@@ -6,7 +6,6 @@ function loginValidation(data) {
     const schema = Joi.object({
         username: Joi
                 .string()
-                .min(1)
                 .required(),
         password: Joi
                 .string()
@@ -17,4 +16,24 @@ function loginValidation(data) {
     return schema.validateAsync(data);
 }
 
-module.exports = { loginValidation };
+function registerValidation(data) {
+    const schema = Joi.object({
+        username: Joi
+                .string()
+                .required(),
+        password: Joi
+                .string()
+                .min(6)
+                .required(),
+        code:     Joi
+                .string()
+                .required() 
+    });
+
+    return schema.validateAsync(data);
+}
+
+module.exports = {
+    loginValidation,
+    registerValidation
+};
