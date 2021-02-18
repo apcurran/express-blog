@@ -6,12 +6,13 @@ const bcrypt = require("bcrypt");
 
 const Admin = require("../models/Admin");
 const { validateRegisterFields } = require("../middleware/validate-user");
+const { checkNotAuthenticated } = require("../config/check-auth");
 
-router.get("/", (req, res) => {
+router.get("/", checkNotAuthenticated, (req, res) => {
     res.render("account/register-form", { title: "Register an Admin Account" });
 });
 
-router.post("/", validateRegisterFields, async (req, res, next) => {
+router.post("/", checkNotAuthenticated, validateRegisterFields, async (req, res, next) => {
     try {
         if (req.body.code !== process.env.ADMIN_SECRET) {
             return res.render("account/register-form", { title: "Register an Admin Account", error: "Incorrect Admin Code", user: req.body });

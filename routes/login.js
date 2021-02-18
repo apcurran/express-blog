@@ -13,6 +13,7 @@ router.get("/", checkNotAuthenticated, (req, res) => {
 
 router.post(
     "/",
+    checkNotAuthenticated,
     validateLoginFields,    // Validate and re-render view if data doesn't follow validation schema
     passport.authenticate("local", {
         successRedirect: "/",
