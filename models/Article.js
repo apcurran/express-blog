@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const marked = require("marked");
 const slugify = require("slugify");
 const { JSDOM } = require("jsdom");
-const moment = require("moment");
 const createDOMPurify = require("dompurify");
 const dompurify = createDOMPurify(new JSDOM("").window);
 
