@@ -61,6 +61,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use((req, res, next) => {
     // Set global view variable for conditional templating when logged in.
     res.locals.isAuthenticated = req.isAuthenticated();
