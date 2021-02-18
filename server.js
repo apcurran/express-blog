@@ -76,6 +76,17 @@ app.use("/account/register", registerRouter);
 app.use("/account/login", loginRouter);
 app.use("/account/logout", logoutRouter);
 
+// 404 error page
+app.use((req, res) => {
+    res.status(404).render("404-error", { title: "404 Not Found" });
+});
+// Catch-all final error page
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    res.status(500).render(error, { title: "Server Error", error: err.message });
+});
+
 app.listen(PORT, () =>  {
     if (process.env.NODE_ENV === "development") {
         console.log(`Server running on port ${PORT}.`);
