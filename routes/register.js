@@ -38,7 +38,6 @@ router.post("/", checkNotAuthenticated, validateRegisterFields, async (req, res,
         res.redirect("/account/login");
 
     } catch (err) {
-        console.error(err);
         next(err);
     }
 });

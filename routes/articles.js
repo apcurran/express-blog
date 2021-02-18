@@ -20,9 +20,6 @@ function saveArticleAndRedirect(path) {
             res.redirect(`/articles/post/${article.slug}`);
         } catch (err) {
             res.render(`articles/${path}`, { title: "Post", error: err, article: article });
-    
-            console.error(err);
-            next(err);
         }
     }
 }
@@ -36,7 +33,6 @@ router.get("/post/:slug", async (req, res) => {
         res.render("articles/show-post", { title: article.title, article: article });
 
     } catch (err) {
-        console.error(err);
         next(err);
     }
 
@@ -52,7 +48,6 @@ router.get("/post/edit/:id", async (req, res) => {
         
         res.render("articles/edit", { title: "New Post", article: article });
     } catch (err) {
-        console.error(err);
         next(err);
     }
 });
@@ -73,7 +68,6 @@ router.delete("/post/:id", checkAuthenticated, async (req, res, next) => {
 
         res.redirect("/");
     } catch (err) {
-        console.error(err);
         next(err);
     }
 });
@@ -93,7 +87,6 @@ router.post("/post/:id/comment", async (req, res, next) => {
         res.redirect(`/articles/post/${article.slug}`);
         
     } catch (err) {
-        console.error(err);
         next(err);
     }
 });
@@ -112,7 +105,6 @@ router.delete("/post/:id/comment/:comment_id", checkAuthenticated, async (req, r
         res.redirect(`/articles/post/${article.slug}`);
         
     } catch (err) {
-        console.error(err);
         next(err);
     }
 });
