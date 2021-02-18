@@ -84,7 +84,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
     console.error(err);
 
-    res.status(500).render(error, { title: "Server Error", error: err.message });
+    res.status(500).render("error", { title: "Server Error", error: err.message });
 });
 
 app.listen(PORT, () =>  {
