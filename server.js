@@ -52,7 +52,6 @@ app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
 
 // Passport Setup
 initializePassport(); // Custom function
