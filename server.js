@@ -24,9 +24,14 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 
-// Dev logging
 if (process.env.NODE_ENV === "development") {
+    // Enable dev logging
     app.use(morgan("dev"));
+    // Disable caching
+    app.use(express.static("public"));
+} else {
+    // Enable 1 day caching of static assets
+    app.use(express.static("public", { maxAge: "1d" }));
 }
 
 const store = new MongoDBStore({
