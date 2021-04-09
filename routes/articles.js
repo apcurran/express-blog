@@ -25,7 +25,7 @@ function saveArticleAndRedirect(path) {
     }
 }
 
-router.get("/post/:slug", cache(20), async (req, res) => {
+router.get("/post/:slug", cache(3600), async (req, res) => {
     try {
         const article = await Article.findOne({ slug: req.params.slug });
     

@@ -4,7 +4,6 @@ const NodeCache = require("node-cache");
 
 const cache = new NodeCache();
 
-
 module.exports = (duration) => {
     return function cacheRoute(req, res, next) {
         if (req.method !== "GET") {
@@ -17,10 +16,10 @@ module.exports = (duration) => {
         const cachedResponse = cache.get(key);
     
         if (cachedResponse) {
-            console.log(`Cache hit for ${key}`);
+            // Cache hit
             res.send(cachedResponse);
         } else {
-            console.log(`Cache miss for ${key}`);
+            // Cache miss
             res.originalSend = res.send;
             res.send = (body) => {
                 res.originalSend(body);
