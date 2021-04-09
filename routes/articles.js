@@ -2,6 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
+const cache = require("../middleware/route-cache");
 
 const Article = require("../models/Article");
 const { checkAuthenticated } = require("../config/check-auth");
@@ -24,7 +25,7 @@ function saveArticleAndRedirect(path) {
     }
 }
 
-router.get("/post/:slug", async (req, res) => {
+router.get("/post/:slug", cache(20), async (req, res) => {
     try {
         const article = await Article.findOne({ slug: req.params.slug });
     
