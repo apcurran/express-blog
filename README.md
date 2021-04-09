@@ -17,3 +17,5 @@
 * Marked package utilized to convert markdown blog post files to HTML
 
 * EJS used for templating
+
+* Node-Cache middleware used for caching GET article route
