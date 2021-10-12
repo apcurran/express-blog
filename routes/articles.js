@@ -22,10 +22,10 @@ function saveArticleAndRedirect(path) {
         } catch (err) {
             res.render(`articles/${path}`, { title: "Post", error: err, article: article });
         }
-    }
+    };
 }
 
-router.get("/post/:slug", cache(3600), async (req, res) => {
+router.get("/post/:slug", cache(3600), async (req, res, next) => {
     try {
         const article = await Article.findOne({ slug: req.params.slug });
     
@@ -43,7 +43,7 @@ router.get("/new", checkAuthenticated, (req, res) => {
     res.render("articles/new", { title: "New Post" });
 });
 
-router.get("/post/edit/:id", async (req, res) => {
+router.get("/post/edit/:id", async (req, res, next) => {
     try {
         const article = await Article.findById(req.params.id).lean();
         

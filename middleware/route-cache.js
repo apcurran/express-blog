@@ -25,9 +25,9 @@ module.exports = (duration) => {
                 res.originalSend(body);
     
                 cache.set(key, body, duration);
-            }
+            };
     
             next();
         }
-    }
+    };
 };

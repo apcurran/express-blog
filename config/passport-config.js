@@ -18,7 +18,7 @@ function initializePassport() {
                     if (res) return done(null, user);
     
                     return done(null, false, { message: "Incorrect password" });
-                })
+                });
             });
         })
     );

@@ -42,7 +42,7 @@ const store = new MongoDBStore({
 // DB Setup
 mongoose
     .connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .catch(err => console.error("Mongo error:", err));
+    .catch((err) => console.error("Mongo error:", err));
 mongoose.set("useCreateIndex", true);
 
 app.use(helmet());
