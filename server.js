@@ -24,6 +24,8 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 
+app.use(shrinkRay());
+
 if (process.env.NODE_ENV === "development") {
     // Enable dev logging
     app.use(morgan("dev"));
@@ -46,7 +48,6 @@ mongoose
 mongoose.set("useCreateIndex", true);
 
 app.use(helmet());
-app.use(shrinkRay());
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
