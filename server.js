@@ -14,7 +14,7 @@ const passport = require("passport");
 const initializePassport = require("./config/passport-config");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
-const compression = require("compression");
+const shrinkRay = require("shrink-ray-current");
 const helmet = require("helmet");
 
 // Import routes
@@ -46,7 +46,7 @@ mongoose
 mongoose.set("useCreateIndex", true);
 
 app.use(helmet());
-app.use(compression());
+app.use(shrinkRay());
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("layout", "layouts/layout");
