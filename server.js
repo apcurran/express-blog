@@ -24,16 +24,10 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 
-app.use(shrinkRay());
 
 if (process.env.NODE_ENV === "development") {
     // Enable dev logging
     app.use(morgan("dev"));
-    // Disable caching
-    app.use(express.static("public"));
-} else {
-    // Enable 1 day caching of static assets
-    app.use(express.static("public", { maxAge: "1d" }));
 }
 
 const store = new MongoDBStore({
@@ -45,8 +39,11 @@ const store = new MongoDBStore({
 mongoose
     .connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.error("Mongo error:", err));
-mongoose.set("useCreateIndex", true);
+mongoose
+    .set("useCreateIndex", true);
 
+app.use(shrinkRay());
+app.use(express.static("public"));
 app.use(helmet());
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
