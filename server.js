@@ -37,10 +37,8 @@ const store = new MongoDBStore({
 
 // DB Setup
 mongoose
-    .connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(process.env.DB_URI)
     .catch((err) => console.error("Mongo error:", err));
-mongoose
-    .set("useCreateIndex", true);
 
 app.use(shrinkRay());
 app.use(express.static("public"));
