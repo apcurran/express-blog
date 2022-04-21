@@ -1,7 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const marked = require("marked");
+const { marked } = require("marked");
 const slugify = require("slugify");
 const { JSDOM } = require("jsdom");
 const createDOMPurify = require("dompurify");
@@ -30,7 +30,7 @@ ArticleSchema
         }
 
         if (this.markdown) {
-            const convertedHtmlFromMarkdown = marked(this.markdown);
+            const convertedHtmlFromMarkdown = marked.parse(this.markdown);
             this.sanitizedHtml = dompurify.sanitize(convertedHtmlFromMarkdown);
         }
 
