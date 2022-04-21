@@ -25,7 +25,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.2",
     "helmet": "^3.23.3",
-    "joi": "^17.4.3",
+    "joi": "^17.6.0",
     "jsdom": "^16.7.0",
     "marked": "^0.8.2",
     "method-override": "^3.0.0",
