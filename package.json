@@ -24,7 +24,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.2",
-    "helmet": "^3.23.3",
+    "helmet": "^5.0.2",
     "joi": "^17.6.0",
     "jsdom": "^19.0.0",
     "marked": "^4.0.14",
