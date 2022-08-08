@@ -24,7 +24,6 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 
-
 if (process.env.NODE_ENV === "development") {
     // Enable dev logging
     app.use(morgan("dev"));
