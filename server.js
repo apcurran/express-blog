@@ -16,6 +16,7 @@ const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
 const shrinkRay = require("shrink-ray-current");
 const helmet = require("helmet");
+const csrf = require("csurf");
 
 // Import routes
 const articlesRouter = require("./routes/articles");
@@ -60,10 +61,14 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+// csrf setup
+const csrfProtection = csrf();
+app.use(csrfProtection);
 
 app.use((req, res, next) => {
-    // Set global view variable for conditional templating when logged in.
+    // set global view variable for conditional templating when logged in.
     res.locals.isAuthenticated = req.isAuthenticated();
+    res.locals.csrfToken = req.csrfToken();
 
     next();
 });
