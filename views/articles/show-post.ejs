@@ -32,6 +32,7 @@
                             <p class="post__comments__list__text"><%= comment.text %></p>
                             <% if (isAuthenticated) { %>
                                 <form method="POST" action="/articles/post/<%= article.id %>/comment/<%= comment._id %>?_method=DELETE" class="form">
+                                    <%- include("../partials/input-csrf-token.ejs") %>
                                     <button class="form-submit" type="submit">Delete Comment</button>
                                 </form>
                             <% } %>
