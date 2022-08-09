@@ -10,6 +10,9 @@ function loginValidation(data) {
         password: Joi
                 .string()
                 .min(6)
+                .required(),
+        _csrf:    Joi
+                .string()
                 .required()
     });
 
@@ -27,7 +30,10 @@ function registerValidation(data) {
                 .required(),
         code:     Joi
                 .string()
-                .required() 
+                .required(),
+        _csrf:    Joi
+                .string()
+                .required()
     });
 
     return schema.validateAsync(data);
