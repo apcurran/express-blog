@@ -16,6 +16,7 @@
                 <div class="article__controls">
                     <a href="/articles/post/edit/<%= article.id %>" class="article__edit">Edit</a>
                     <form method="POST" action="/articles/post/<%= article.id %>?_method=DELETE" class="form">
+                        <%- include("../partials/input-csrf-token.ejs") %> 
                         <button class="form-submit" type="submit">Delete</button>
                     </form>
                 </div>
