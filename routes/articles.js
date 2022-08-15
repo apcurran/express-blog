@@ -20,7 +20,9 @@ function saveArticleAndRedirect(path) {
     
             res.redirect(`/articles/post/${article.slug}`);
         } catch (err) {
-            res.render(`articles/${path}`, { title: "Post", error: err, article: article });
+            console.error(err);
+
+            res.render(`articles/${path}`, { title: "Post", error: "An exception occurred", article: article });
         }
     };
 }
