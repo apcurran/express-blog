@@ -3,7 +3,6 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const sanitize = require("mongo-sanitize");
 
 const Admin = require("../models/Admin");
 const { validateRegisterFields } = require("../middleware/validate-user");
@@ -19,20 +18,22 @@ router.post("/", checkNotAuthenticated, validateRegisterFields, async (req, res,
             return res.render("account/register-form", { title: "Register an Admin Account", error: "Incorrect Admin Code", user: req.body });
         }
 
-        const cleanUsername = sanitize(req.body.username);
-        const usernameExists = await Admin.findOne({ username: cleanUsername }).lean();
+        const { username, password } = req.body;
+        const usernameExists = await Admin
+                                        .findOne({ username: username })
+                                        .lean()
+                                        .setOptions({ sanitizeFilter: true });
 
         if (usernameExists) {
             return res.render("account/register-form", { title: "Register an Admin Account", error: "Username already exists", user: req.body });
         }
 
         // Otherwise, hash pw and save admin to db
-        const cleanPassword = sanitize(req.body.password);
         const saltRounds = 12;
-        const hashedPassword = await bcrypt.hash(cleanPassword, saltRounds);
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const admin = new Admin({
-            username: cleanUsername,
+            username: username,
             password: hashedPassword
         });
 

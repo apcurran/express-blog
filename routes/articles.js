@@ -2,7 +2,6 @@
 
 const express = require("express");
 const router = express.Router();
-const sanitize = require("mongo-sanitize");
 
 const Article = require("../models/Article");
 const { checkAuthenticated } = require("../config/check-auth");
@@ -29,8 +28,10 @@ function saveArticleAndRedirect(path) {
 
 router.get("/post/:slug", async (req, res, next) => {
     try {
-        const cleanSlug = sanitize(req.params.slug);
-        const article = await Article.findOne({ slug: cleanSlug });
+        const { slug } = req.params;
+        const article = await Article
+                                .findOne({ slug: slug })
+                                .setOptions({ sanitizeFilter: true });
     
         if (article == null) res.redirect("/");
 

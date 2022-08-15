@@ -30,7 +30,6 @@
     "jsdom": "^19.0.0",
     "marked": "^4.0.14",
     "method-override": "^3.0.0",
-    "mongo-sanitize": "^1.1.0",
     "mongoose": "^6.5.2",
     "morgan": "^1.10.0",
     "node-cache": "^5.1.2",
