@@ -85,6 +85,7 @@ app.use((req, res) => {
     res.status(404).render("404-error", { title: "404 Not Found" });
 });
 // Catch-all final error page
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
     console.error(err);
 
