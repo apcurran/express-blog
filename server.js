@@ -30,6 +30,9 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
+// reduce fingerprinting
+app.disable("x-powered-by");
+
 const store = new MongoDBStore({
     uri: process.env.DB_URI,
     collection: "sessions"
