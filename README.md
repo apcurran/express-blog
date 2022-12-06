@@ -1,6 +1,6 @@
 # Markdown Blog
 
-[Live Site](https://alexcurran-blog.herokuapp.com/)
+[Live Site](https://express-blog.currandev.com)
 
 ## Features:
 
