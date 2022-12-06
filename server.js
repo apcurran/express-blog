@@ -56,6 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 initializePassport(); // Custom function
 app.use(session({
     secret: process.env.SESSION_SECRET,
+    name: process.env.SESSION_NAME,
     resave: false,
     saveUninitialized: false,
     store: store, // MongoDB session store
