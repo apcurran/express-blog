@@ -30,6 +30,11 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
+if (process.env.NODE_ENV === "production") {
+    // trust first proxy for cookie secure option to work properly
+    app.set("trust proxy", 1);
+}
+
 // reduce fingerprinting
 app.disable("x-powered-by");
 
