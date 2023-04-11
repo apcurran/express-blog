@@ -106,6 +106,7 @@ textarea {
     margin-top: .25rem;
     color: var(--dark-grey);
     font-size: 1rem;
+    font-weight: 700;
 }
 
 .article__description {

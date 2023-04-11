@@ -10,7 +10,7 @@
             <a href="articles/post/<%= article.slug %>">
                 <h2 class="article__title"><%= article.title %></h2>
             </a>
-            <h3 class="article__date"><%= article.createdDateFormatted %> </h3>
+            <p class="article__date"><%= article.createdDateFormatted %> </p>
             <p class="article__description"><%= article.description %></p>
             <% if (user) { %>
                 <div class="article__controls">
