@@ -37,16 +37,19 @@ ArticleSchema
         next();
     });
 
+const dateFormatterFull = new Intl.DateTimeFormat("en-US", { dateStyle: "full" });
+const dateFormatterLong = new Intl.DateTimeFormat("en-US", { dateStyle: "long" });
+
 ArticleSchema
     .virtual("createdDateFormatted")
     .get(function() {
-        return new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(this.createdAt);
+        return dateFormatterFull.format(this.createdAt);
     });
 
 CommentsSchema
     .virtual("commentDateFormatted")
     .get(function() {
-        return new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(this.createdAt);
+        return dateFormatterLong.format(this.createdAt);
     });
 
 module.exports = mongoose.model("Article", ArticleSchema);
