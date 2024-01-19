@@ -1,6 +1,6 @@
 # Markdown Blog
 
-[Live Site](https://express-blog.currandev.com)
+[View live site](https://express-blog.currandev.com)
 
 ## Features:
 
@@ -17,3 +17,5 @@
 * Marked package utilized to convert markdown blog post files to HTML
 
 * EJS used for templating
+
+![Blog post page](./readme-imgs/readme-blog-post.min.jpg)
