@@ -76,7 +76,7 @@ server {
   access_log  {{ $.NGINX_ACCESS_LOG_PATH }}{{ if and ($.NGINX_ACCESS_LOG_FORMAT) (ne $.NGINX_ACCESS_LOG_PATH "off") }} {{ $.NGINX_ACCESS_LOG_FORMAT }}{{ end }};
   error_log   {{ $.NGINX_ERROR_LOG_PATH }};
   underscores_in_headers off;
-  root {{ $.DOKKU_ROOT }}/{{ $.APP }}
+  root {{ $.DOKKU_ROOT }}/{{ $.APP }};
 
   ssl_certificate           {{ $.APP_SSL_PATH }}/server.crt;
   ssl_certificate_key       {{ $.APP_SSL_PATH }}/server.key;
