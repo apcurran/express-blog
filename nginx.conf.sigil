@@ -113,7 +113,7 @@ server {
 
   # setup for serving static files from NGINX
   location /public {
-    root {{ .DOKKU_ROOT }}/{{ .APP }};
+    root {{ $.DOKKU_ROOT }}/{{ $.APP }};
     try_files $uri $uir/ =404;
   }
 
