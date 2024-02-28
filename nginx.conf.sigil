@@ -113,6 +113,7 @@ server {
 
   # setup for serving static files from NGINX
   location /public {
+    proxy_pass  http://{{ $.APP }}-{{ $upstream_port }};
     try_files $uri $uri/ $uri.html =404;
   }
 
