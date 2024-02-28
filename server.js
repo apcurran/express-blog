@@ -28,6 +28,9 @@ const logoutRouter = require("./routes/logout");
 if (process.env.NODE_ENV === "development") {
     // Enable dev logging
     app.use(morgan("dev"));
+    // use Express to serve static files in DEV mode
+    // otherwise, use NGINX
+    app.use(express.static("public"));
 }
 
 if (process.env.NODE_ENV === "production") {
@@ -49,7 +52,6 @@ mongoose
     .catch((err) => console.error("Mongo error:", err));
 
 app.use(shrinkRay());
-app.use(express.static("public"));
 app.use(helmet());
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
