@@ -113,7 +113,7 @@ server {
 
   # setup for serving static files from NGINX
   location /public {
-    root {{ $.DOKKU_ROOT }}/{{ $.APP }};
+    root /{{ $.DOKKU_ROOT }}/{{ $.APP }};
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
