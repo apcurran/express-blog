@@ -114,7 +114,7 @@ server {
   # setup for serving static files from NGINX
   location /public {
     root {{ $.DOKKU_ROOT }}/{{ $.APP }};
-    try_files $uri $uir/ =404;
+    try_files $uri $uri/ =404;
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
