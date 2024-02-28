@@ -13,12 +13,6 @@ server {
   error_log   {{ $.NGINX_ERROR_LOG_PATH }};
   underscores_in_headers off;
 
-  # setup for serving static files from NGINX
-  location /public {
-    root {{ .DOKKU_ROOT }}/{{ .APP }};
-    try_files $uri $uir/ =404;
-  }
-  
 {{ if (and (eq $listen_port "80") ($.SSL_INUSE)) }}
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
   location / {
@@ -115,6 +109,12 @@ server {
     proxy_set_header X-Forwarded-Proto {{ $.PROXY_X_FORWARDED_PROTO }};
     proxy_set_header X-Request-Start $msec;
     {{ if $.PROXY_X_FORWARDED_SSL }}proxy_set_header X-Forwarded-Ssl {{ $.PROXY_X_FORWARDED_SSL }};{{ end }}
+  }
+
+  # setup for serving static files from NGINX
+  location /public {
+    root {{ .DOKKU_ROOT }}/{{ .APP }};
+    try_files $uri $uir/ =404;
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
