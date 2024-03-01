@@ -48,7 +48,7 @@ mongoose
     .connect(process.env.DB_URI)
     .catch((err) => console.error("Mongo error:", err));
 
-app.use(shrinkRay());
+// app.use(shrinkRay());
 app.use(express.static("public"));
 app.use(helmet());
 app.use(methodOverride("_method"));
