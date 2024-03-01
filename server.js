@@ -14,7 +14,6 @@ const passport = require("passport");
 const initializePassport = require("./config/passport-config");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
-const shrinkRay = require("shrink-ray-current");
 const helmet = require("helmet");
 const csrf = require("csurf");
 
@@ -48,7 +47,6 @@ mongoose
     .connect(process.env.DB_URI)
     .catch((err) => console.error("Mongo error:", err));
 
-// app.use(shrinkRay());
 app.use(express.static("public"));
 app.use(helmet());
 app.use(methodOverride("_method"));
