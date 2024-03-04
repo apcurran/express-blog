@@ -6,7 +6,6 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
-const morgan = require("morgan");
 const session = require("express-session");
 const flash = require("express-flash");
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -26,6 +25,8 @@ const logoutRouter = require("./routes/logout");
 
 if (process.env.NODE_ENV === "development") {
     // Enable dev logging
+    const morgan = require("morgan");
+    
     app.use(morgan("dev"));
 }
 
